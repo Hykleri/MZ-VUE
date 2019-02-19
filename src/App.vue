@@ -1,15 +1,3 @@
 <template>
-  <div>
-    <Film></Film>
-  </div>
+  <router-view></router-view>
 </template>
-
-<script>
-import Film from './views/Film';
-
-export default {
-  components: {
-    Film
-  }
-}
-</script>
