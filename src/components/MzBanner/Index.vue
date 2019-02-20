@@ -57,7 +57,7 @@ export default {
       }
     }).then((res) => {
       // !!!! res 不是 后台返回给你的数据，真正后台给你返回的数据在 res.data 上面。
-      console.log(res);
+      // console.log(res);
       let data = res.data;
       if (data.code === 0) {
         this.bannerList = data.data;

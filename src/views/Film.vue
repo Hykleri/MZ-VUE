@@ -2,6 +2,14 @@
   <div>
     <MzBanner></MzBanner>
     <MzTable></MzTable>
+
+    <button @click="goCity">选择城市</button>
+
+    <ul>
+      <router-link tag="li" to="/detail/100">刀剑神域</router-link>
+      <router-link tag="li" to="/detail/200">约定的梦幻岛</router-link>
+      <router-link tag="li" to="/detail/300">五等分的新娘</router-link>
+    </ul>
   </div>
 </template>
 
@@ -14,6 +22,12 @@ export default {
   components: {
     MzBanner,
     MzTable
+  },
+
+  methods: {
+    goCity () {
+      this.$router.replace('/city');
+    }
   }
 }
 </script>
