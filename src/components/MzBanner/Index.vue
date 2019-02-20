@@ -92,14 +92,14 @@ export default {
     opacity: 1!important;
   }
 
-  .swiper-pagination {
-    // width: 5px!important;
-    // height: 5px!important;
-    // position: absolute;
-    // bottom: 10px;
-    // left: auto!important;
-    // right: 12px!important;
-  }
+  // .swiper-pagination {
+  //   // width: 5px!important;
+  //   // height: 5px!important;
+  //   // position: absolute;
+  //   // bottom: 10px;
+  //   // left: auto!important;
+  //   // right: 12px!important;
+  // }
   .swiper-pagination-bullet-active {
     opacity: 1;
     background: #fff;
