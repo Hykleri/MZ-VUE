@@ -1,6 +1,6 @@
 <template>
   <div class="mz-city">
-    <MzHeader title="当前城市-">{{ filterCityData }}</MzHeader>
+    <MzHeader :title="'当前城市-' + curCityName "></MzHeader>
 
     <div class="lv-indexlist">
       <ul class="lv-indexlist__content" id="lv-indexlist__content">
@@ -35,6 +35,7 @@
             <li
               v-for="city in item.list"
               :key="city.cityId"
+              @click="changeCity(city)"
               >
               {{ city.name }}
             </li>
@@ -57,8 +58,11 @@
 </template>
 
 <script>
-import MzHeader from '../../components/MzHeader/Index';
+import MzHeader from '@/components/MzHeader/Index';
 import axios from 'axios';
+
+// vuex的辅助函数
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -67,50 +71,75 @@ export default {
 
   data () {
     return {
+      // curCityName: '深圳', // 自身不要，而是用仓库中的curCityName
       // 城市数据列表
-      cityData: []
+      // cityData: []
     }
   },
 
   computed: {
-    // 处理之后的城市数据
-    filterCityData () {
-      let hash = {};
-      let i = 0;
-      let res = [];
-
-      this.cityData.forEach(item => {
-        // 1.得到当前城市的首字母
-        let firstLetter = item.pinyin.substr(0, 1).toUpperCase();
-        // 2. 判断当前城市的 首字母是循环过程中第一次出现，还是多次出现。
-        if (hash[firstLetter]) {
-          // 存在
-          let index = hash[firstLetter] - 1;
-          res[index].list.push(item);
-        } else {
-          // 不存在
-          hash[firstLetter] = ++i;
-          let obj = {};
-          obj.py = firstLetter;
-          obj.list = [item];
-          res.push(obj);
-        }
-      })
-
-      let temp = res.sort((a, b) => {
-        return a.py.charCodeAt() - b.py.charCodeAt();
-      })
-
-      return temp;
-    },
-
-    // 右侧显示的字母的数据
-    filterLetters () {
-      return this.filterCityData.map(item => {
-        return item.py;
-      })
-    }
+    // 对象展开运算符
+    ...mapState([
+      'cityData',
+      'curCityName'
+    ]),
+    ...mapGetters([
+      'filterCityData',
+      'filterLetters'
+    ])
   },
+
+  // computed: {
+  //   cityData () {
+  //     return this.$store.state.cityData;
+  //   },
+  //   filterCityData () {
+  //     return this.$store.getters.filterCityData;
+  //   },
+  //   filterLetters () {
+  //     return this.$store.getters.filterLetters;
+  //   },
+  //   curCityName () {
+  //     return this.$store.state.curCityName;
+  //   }
+  // },
+  // 处理之后的城市数据
+  // filterCityData () {
+  //   let hash = {};
+  //   let i = 0;
+  //   let res = [];
+
+  //   this.cityData.forEach(item => {
+  //     // 1.得到当前城市的首字母
+  //     let firstLetter = item.pinyin.substr(0, 1).toUpperCase();
+  //     // 2. 判断当前城市的 首字母是循环过程中第一次出现，还是多次出现。
+  //     if (hash[firstLetter]) {
+  //       // 存在
+  //       let index = hash[firstLetter] - 1;
+  //       res[index].list.push(item);
+  //     } else {
+  //       // 不存在
+  //       hash[firstLetter] = ++i;
+  //       let obj = {};
+  //       obj.py = firstLetter;
+  //       obj.list = [item];
+  //       res.push(obj);
+  //     }
+  //   })
+
+  //   let temp = res.sort((a, b) => {
+  //     return a.py.charCodeAt() - b.py.charCodeAt();
+  //   })
+
+  //   return temp;
+  // },
+
+  // 右侧显示的字母的数据
+  // filterLetters () {
+  //   return this.filterCityData.map(item => {
+  //     return item.py;
+  //   })
+  // },
 
   methods: {
     // 获取城市列表数据
@@ -118,7 +147,8 @@ export default {
       axios.get('./json/city.json').then(response => {
         let res = response.data;
         if (res.status === 0) {
-          this.cityData = res.data.cities;
+          // this.cityData = res.data.cities;
+          this.$store.commit('chgCityData', res.data.cities);
         } else {
           alert(res.msg);
         }
@@ -132,6 +162,14 @@ export default {
       console.log(el.offsetTop);
       // 2. 操作滚动条进行滚动
       document.getElementById('lv-indexlist__content').scrollTop = el.offsetTop;
+    },
+
+    // 切换城市
+    changeCity (city) {
+      // this.curCityName = city.name;
+      this.$store.commit('chgCityName', {
+        name: city.name
+      })
     }
   },
 

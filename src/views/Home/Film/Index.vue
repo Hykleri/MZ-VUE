@@ -3,9 +3,10 @@
     <MzBanner></MzBanner>
     <MzTable></MzTable>
 
-    <div @click="goCity" class="city-fixed">
-      <span>城市</span>
-    </div>
+    <router-link tag='div' to='/city' @click="goCity" class="city-fixed">
+      <span>{{ curCityName }}</span>
+      <i class="iconfont icon-xiala" style="font-size: 10px;"></i>
+    </router-link>
 
     <ul>
       <router-link tag="li" to="/detail/100">刀剑神域</router-link>
@@ -26,6 +27,12 @@ export default {
     MzTable
   },
 
+  computed: {
+    curCityName () {
+      return this.$store.state.curCityName;
+    }
+  },
+
   methods: {
     goCity () {
       this.$router.push('/city');
@@ -36,7 +43,7 @@ export default {
 
 <style lang="less">
 .film-list {
-  position: relative;
+  // position: relative;
 
   .city-fixed {
     position: absolute;
@@ -51,8 +58,8 @@ export default {
     border-radius: 15px;
     text-align: center;
     padding: 0 5px;
-    box-sizing: border-box;
-    border: 0;
+    // box-sizing: border-box;
+    // border: 0;
   }
 }
 </style>
