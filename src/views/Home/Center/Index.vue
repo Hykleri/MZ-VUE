@@ -1,7 +1,7 @@
 <template>
   <div class="home-center">
     <div class="avatar">
-      <img src="../assets/avatar.png" class="avator-icon">
+      <img src="@/assets/avatar.png" class="avator-icon">
       <div class="nick-name">立即登录</div>
     </div>
 
@@ -42,6 +42,7 @@
     display: flex;
     align-items: center;
     color: #fff;
+    box-sizing: border-box;
 
     .avator-icon {
       width: 63px;

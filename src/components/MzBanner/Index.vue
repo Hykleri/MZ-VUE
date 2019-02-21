@@ -78,31 +78,5 @@ export default {
 </script>
 
 <style lang="less">
-.mz-banner {
-  height: 210px;
-  img {
-    width: 100%;
-    height: 100%
-  }
-
-  .swiper-pagination-bullet {
-    display: inline-block;
-    border: 1px solid hsla(0,0%,100%,.8)!important;
-    background: hsla(0,0%,100%,0);
-    opacity: 1!important;
-  }
-
-  // .swiper-pagination {
-  //   // width: 5px!important;
-  //   // height: 5px!important;
-  //   // position: absolute;
-  //   // bottom: 10px;
-  //   // left: auto!important;
-  //   // right: 12px!important;
-  // }
-  .swiper-pagination-bullet-active {
-    opacity: 1;
-    background: #fff;
-  }
-}
+@import url('./index.less');
 </style>

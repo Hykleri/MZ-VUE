@@ -40,7 +40,7 @@ export default {
           // this.$router.push('/card');
           // 跳转到用户具体想去的页面
           this.$router.replace({
-            path: this.$route.query.redirect
+            path: this.$route.query.redirect || '/films'
           });
         } else {
           alert(res.msg);
