@@ -1,6 +1,7 @@
 // vuex 仓库文件
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 
@@ -11,7 +12,7 @@ let store = new Vuex.Store({
   // 状态 - 项目中需要用的数据（需要在多个组件中使用的数据）
   state: {
     // 当前定位or切换的城市名称
-    curCityName: '北京',
+    curCityName: '',
 
     // 城市列表数据
     cityData: []
@@ -78,6 +79,32 @@ let store = new Vuex.Store({
      */
     chgCityData (state, payload) {
       state.cityData = payload;
+    }
+  },
+
+  actions: {
+    /**
+     * 调用 百度api 。获取当前的城市名称
+     */
+    getCityName ({ commit }) {
+      /* eslint-disable */
+      var myCity = new BMap.LocalCity();
+      myCity.get((result) => {
+        commit('chgCityName', {
+          name: result.name
+        });
+      })
+    },
+    // 获取城市列表数据
+    getCityData ({ commit, state, getters }) {
+      axios.get('./json/city.json').then(response => {
+        let res = response.data;
+        if (res.status === 0) {
+          commit('chgCityData', res.data.cities);
+        } else {
+          alert(res.msg);
+        }
+      })
     }
   }
 })

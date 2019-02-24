@@ -59,10 +59,14 @@
 
 <script>
 import MzHeader from '@/components/MzHeader/Index';
-import axios from 'axios';
+// import axios from 'axios';
 
 // vuex的辅助函数
-import { mapState, mapGetters } from 'vuex';
+/*
+  PS: mapState mapGetters 用在 computed
+      mapMutations mapActions 用在 methods
+*/
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 
 export default {
   components: {
@@ -142,18 +146,26 @@ export default {
   // },
 
   methods: {
+    // 给组件加一个方法，这个方法其实是 mutation
+    ...mapMutations([
+      'chgCityName',
+      'chgCityData'
+    ]),
+    ...mapActions([
+      'getCityData'
+    ]),
     // 获取城市列表数据
-    getCityData () {
-      axios.get('./json/city.json').then(response => {
-        let res = response.data;
-        if (res.status === 0) {
-          // this.cityData = res.data.cities;
-          this.$store.commit('chgCityData', res.data.cities);
-        } else {
-          alert(res.msg);
-        }
-      })
-    },
+    // getCityData () {
+    //   axios.get('./json/city.json').then(response => {
+    //     let res = response.data;
+    //     if (res.status === 0) {
+    //       // this.cityData = res.data.cities;
+    //       this.$store.commit('chgCityData', res.data.cities);
+    //     } else {
+    //       alert(res.msg);
+    //     }
+    //   })
+    // },
 
     // 右侧字母导航
     hh (py) {
@@ -167,7 +179,10 @@ export default {
     // 切换城市
     changeCity (city) {
       // this.curCityName = city.name;
-      this.$store.commit('chgCityName', {
+      // this.$store.commit('chgCityName', {
+      //   name: city.name
+      // })
+      this.chgCityName({
         name: city.name
       })
     }
