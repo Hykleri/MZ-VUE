@@ -15,7 +15,10 @@ let store = new Vuex.Store({
     curCityName: '',
 
     // 城市列表数据
-    cityData: []
+    cityData: [],
+
+    // 影片类型
+    filmType: 'MzHot'
   },
 
   getters: {
@@ -62,6 +65,10 @@ let store = new Vuex.Store({
   },
 
   mutations: {
+    chgFilmType (state, payload) {
+      state.filmType = payload;
+    },
+
     // key: value
     /**
      * 修改curCityName

@@ -5,6 +5,7 @@ import store from './store/index.js';
 import './assets/styles/reset.less';
 import 'nprogress/nprogress.css';
 import './assets/styles/common.less';
+// import './mockData';
 
 Vue.config.productionTip = false;
 

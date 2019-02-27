@@ -1,9 +1,9 @@
 <template>
   <div class="home-center">
-    <div class="avatar">
+    <router-link tag="div" to="/center" class="avatar">
       <img src="@/assets/avatar.png" class="avator-icon">
       <div class="nick-name">立即登录</div>
-    </div>
+    </router-link>
 
     <ul class="my-order-tab">
       <li>

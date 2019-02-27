@@ -45,7 +45,21 @@ let router = new VueRouter({
         // PS: 二级或二级以上的路由，他们的url地址，是会从一级路由开始一直做追加的。
         {
           path: 'films',
-          component: () => import('./views/Home/Film/Index.vue')
+          component: () => import('./views/Home/Film/Index.vue'),
+          children: [
+            {
+              path: 'MzHot',
+              component: () => import('./views/Home/Film/MzHot/Index.vue')
+            },
+            {
+              path: 'MzSoon',
+              component: () => import('./views/Home/Film/MzSoon/Index.vue')
+            },
+            {
+              path: '',
+              redirect: '/films/MzHot'
+            }
+          ]
         },
         {
           path: 'cinemas',

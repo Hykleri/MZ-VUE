@@ -1,0 +1,146 @@
+.nowPlayingList-wrap {
+  background-color: #fff;
+  box-sizing: border-box;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 15px;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    li {
+      padding: 15px 15px 15px 0;
+      height: 94px;
+      position: relative;
+
+      .nowPlayingFilm-wrap {
+        display: flex;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -webkit-box-pack: start;
+        align-items: center;
+        color: #333;
+        text-decoration: none;
+        outline: none;
+
+        .lazy-img {
+          position: relative;
+        }
+
+        .nowPlayingFilm-info {
+          width: calc(100% - 116px);
+          padding: 0 10px;
+
+          .info-col {
+            overflow: hidden;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+
+            span {
+              display: inline;
+              vertical-align: middle;
+            }
+          }
+        }
+
+        .nowPlayingFilm-buy {
+          line-height: 25px;
+          height: 25px;
+          width: 50px;
+          color: #ff5f16;
+          font-size: 13px;
+          text-align: center;
+          border-radius: 2px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+.nowPlayingList-wrap li .nowPlayingFilm-buy:after {
+  content: " ";
+  -webkit-transform: scale(.5);
+  -ms-transform: scale(.5);
+  transform: scale(.5);
+  position: absolute;
+  border: 1px solid #ff5f16;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  border-radius: 4px;
+}
+
+.nowPlayingList-wrap li .nowPlayingFilm-info .nowPlayingFilm-name .name {
+  max-width: calc(100% - 25px);
+  color: #191a1b;
+  font-size: 16px;
+  height: 22px;
+  line-height: 22px;
+  margin-right: 5px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nowPlayingList-wrap li .nowPlayingFilm-info .nowPlayingFilm-name .item {
+  font-size: 9px;
+  color: #fff;
+  background-color: #d2d6dc;
+  height: 14px;
+  line-height: 14px;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.nowPlayingList-wrap li .nowPlayingFilm-info .label {
+  font-size: 13px;
+  margin-top: 4px;
+  color: #797d82;
+}
+
+.nowPlayingList-wrap li .nowPlayingFilm-info .nowPlayingFilm-grade .grade {
+  color: #ffb232;
+  font-size: 14px;
+}
+
+.nowPlayingList-wrap li:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #ededed;
+  color: #ededed;
+  -webkit-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -webkit-transform: scaleY(.5);
+  -ms-transform: scaleY(.5);
+  transform: scaleY(.5);
+}
+
+.lazy-img .lazy-img-wrap .target-img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+.lz-foot {
+  text-align: center;
+}
+
+.lz-footBin {
+  text-align: center;
+}

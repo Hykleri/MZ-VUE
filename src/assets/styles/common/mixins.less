@@ -1,0 +1,48 @@
+.border-1-top {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #ededed;
+    transform: scaleY(.5);
+  }
+}
+.border-1-bottom {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #ededed;
+    transform: scaleY(.5);
+  }
+}
+.border-1 {
+  position: relative;
+  &::after {
+    content: "";
+    transform: scale(.5);
+    position: absolute;
+    border: 1px solid #ff5f16;
+    top: -50%;
+    right: -50%;
+    bottom: -50%;
+    left: -50%;
+    border-radius: 4px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
