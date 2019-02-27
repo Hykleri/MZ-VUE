@@ -68,7 +68,7 @@ export default {
 
   methods: {
     getFilmData () {
-      axios.get('/api/gateway', {
+      axios.get('https://m.maizuo.com/gateway', {
         params: {
           cityId: 440300,
           pageSize: this.pageSize,
